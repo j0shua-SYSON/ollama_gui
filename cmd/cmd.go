@@ -2444,6 +2444,7 @@ func NewCLI() *cobra.Command {
 	runnerCmd.SetHelpFunc(func(cmd *cobra.Command, args []string) {
 		_ = runner.Execute(args[1:])
 	})
+	guiCmd := newGUICmd()
 
 	envVars := envconfig.AsMap()
 
@@ -2461,6 +2462,7 @@ func NewCLI() *cobra.Command {
 		copyCmd,
 		deleteCmd,
 		serveCmd,
+		guiCmd,
 	} {
 		switch cmd {
 		case runCmd:
@@ -2493,6 +2495,7 @@ func NewCLI() *cobra.Command {
 
 	rootCmd.AddCommand(
 		serveCmd,
+		guiCmd,
 		createCmd,
 		showCmd,
 		runCmd,
